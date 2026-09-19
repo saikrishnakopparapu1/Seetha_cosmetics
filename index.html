@@ -3,844 +3,706 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>🎬 CineMax · Movie Booking</title>
-  <!-- Google Fonts + Font Awesome for icons -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+  <title>Seetha Cosmetics | Ayurvedic Soaps & Hair Care</title>
+  <!-- Font Awesome 6 (free) -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <style>
-    /* modern reset + base */
+    /* ---------- Global Reset / Variables ---------- */
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
     }
 
+    :root {
+      --cream: #fef9f0;
+      --soft-beige: #f7efe4;
+      --light-wood: #e8d9c6;
+      --deep-forest: #2c4a2e;
+      --sage: #6a8e6f;
+      --pale-sage: #c1d7c0;
+      --warm-clay: #b87c5a;
+      --golden: #d4a373;
+      --text-dark: #2b2b2b;
+      --text-soft: #4f4f4f;
+      --white: #ffffff;
+      --shadow-sm: 0 6px 14px rgba(0, 0, 0, 0.04);
+      --shadow-md: 0 12px 24px rgba(0, 0, 0, 0.06);
+      --radius-lg: 28px;
+      --radius-md: 18px;
+      --radius-sm: 40px;
+    }
+
     body {
-      font-family: 'Inter', system-ui, -apple-system, sans-serif;
-      background: #0b0f1a;
-      color: #eef2ff;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      min-height: 100vh;
-      padding: 1.5rem;
+      background-color: var(--cream);
+      font-family: 'Segoe UI', 'Helvetica Neue', system-ui, sans-serif;
+      color: var(--text-dark);
       line-height: 1.5;
     }
 
-    /* main card – world class developer aesthetic */
-    .booking-app {
-      max-width: 1100px;
-      width: 100%;
-      background: rgba(18, 24, 38, 0.9);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      border-radius: 2.5rem;
-      padding: 2.2rem 2.5rem;
-      box-shadow: 0 30px 50px -20px rgba(0, 0, 0, 0.8), 
-                  inset 0 1px 2px rgba(255, 255, 255, 0.05);
-      border: 1px solid rgba(255, 255, 255, 0.06);
-      transition: all 0.2s ease;
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 1.5rem 2rem 4rem;
     }
 
-    /* header */
-    .app-header {
+    /* ---------- Typography ---------- */
+    h1, h2, h3 {
+      font-weight: 400;
+      letter-spacing: -0.02em;
+    }
+
+    h2 {
+      font-size: 2.2rem;
+      color: var(--deep-forest);
+      margin-bottom: 0.5rem;
+      font-weight: 350;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    h2 i {
+      color: var(--golden);
+      font-size: 1.8rem;
+    }
+
+    .section-subhead {
+      color: var(--sage);
+      font-size: 1.1rem;
+      margin-bottom: 2.5rem;
+      border-left: 4px solid var(--golden);
+      padding-left: 1.2rem;
+      font-style: italic;
+    }
+
+    /* ---------- Header / Navigation ---------- */
+    .navbar {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 2rem;
+      padding: 0.8rem 0 1.2rem;
+      border-bottom: 1px solid rgba(106, 142, 111, 0.2);
       flex-wrap: wrap;
-      gap: 1rem;
     }
 
     .logo {
       display: flex;
       align-items: center;
-      gap: 0.7rem;
-      font-weight: 700;
-      font-size: 1.7rem;
-      letter-spacing: -0.02em;
-      color: #fff;
+      gap: 12px;
     }
 
-    .logo i {
-      color: #f43f5e;
-      filter: drop-shadow(0 0 12px rgba(244, 63, 94, 0.5));
+    .logo-icon {
+      background: var(--deep-forest);
+      color: var(--cream);
+      width: 54px;
+      height: 54px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       font-size: 2rem;
+      font-weight: 300;
+      box-shadow: var(--shadow-sm);
+      border: 2px solid var(--golden);
     }
 
-    .logo span {
-      background: linear-gradient(to right, #fff, #cbd5e1);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
+    .logo-text h1 {
+      font-size: 2rem;
+      font-weight: 400;
+      color: var(--deep-forest);
+      line-height: 1.1;
     }
 
-    .badge {
-      background: rgba(255, 255, 255, 0.04);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      padding: 0.5rem 1.2rem;
-      border-radius: 40px;
-      font-size: 0.9rem;
-      font-weight: 500;
-      color: #94a3b8;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-
-    .badge i {
-      color: #facc15;
-      font-size: 0.9rem;
-    }
-
-    /* movie list – elegant cards */
-    .movie-section {
-      margin-bottom: 2rem;
-    }
-
-    .section-title {
-      font-size: 1.1rem;
-      font-weight: 600;
+    .logo-text span {
+      font-size: 0.8rem;
+      letter-spacing: 3px;
       text-transform: uppercase;
-      letter-spacing: 0.05em;
-      color: #94a3b8;
-      margin-bottom: 1.2rem;
+      color: var(--golden);
+      font-weight: 500;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--text-soft);
+      margin-left: 2rem;
+      font-weight: 500;
+      font-size: 1rem;
+      transition: color 0.2s;
+      position: relative;
+    }
+
+    .nav-links a:hover {
+      color: var(--deep-forest);
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -6px;
+      left: 0;
+      width: 0%;
+      height: 2px;
+      background: var(--golden);
+      transition: width 0.2s;
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    /* ---------- Hero ---------- */
+    .hero {
       display: flex;
       align-items: center;
-      gap: 0.6rem;
+      gap: 3rem;
+      margin: 2.5rem 0 4.5rem;
+      background: linear-gradient(145deg, #ffffff 0%, var(--soft-beige) 100%);
+      border-radius: var(--radius-lg);
+      padding: 2rem 3rem;
+      box-shadow: var(--shadow-sm);
+      border: 1px solid rgba(212, 163, 115, 0.2);
     }
 
-    .section-title i {
-      color: #f43f5e;
-      font-size: 1rem;
+    .hero-content {
+      flex: 1.2;
     }
 
-    .movie-grid {
+    .hero-content .badge {
+      display: inline-block;
+      background: var(--pale-sage);
+      color: var(--deep-forest);
+      padding: 0.3rem 1.2rem;
+      border-radius: var(--radius-sm);
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      margin-bottom: 1.2rem;
+    }
+
+    .hero-content h2 {
+      font-size: 3rem;
+      line-height: 1.2;
+      color: var(--deep-forest);
+      margin-bottom: 1rem;
+      font-weight: 350;
+      display: block;
+    }
+
+    .hero-content h2 i {
+      display: inline;
+      font-size: 2.5rem;
+      margin-right: 8px;
+      color: var(--warm-clay);
+    }
+
+    .hero-content p {
+      color: var(--text-soft);
+      font-size: 1.15rem;
+      margin-bottom: 2rem;
+      max-width: 540px;
+    }
+
+    .hero-cta {
       display: flex;
+      gap: 1.2rem;
+      align-items: center;
+    }
+
+    .btn-primary {
+      background: var(--deep-forest);
+      color: var(--cream);
+      border: none;
+      padding: 0.9rem 2.2rem;
+      border-radius: var(--radius-sm);
+      font-weight: 600;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: all 0.2s;
+      box-shadow: var(--shadow-sm);
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      letter-spacing: 0.3px;
+    }
+
+    .btn-primary:hover {
+      background: #1f3a21;
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .btn-outline {
+      background: transparent;
+      border: 1.5px solid var(--sage);
+      color: var(--deep-forest);
+      padding: 0.9rem 2rem;
+      border-radius: var(--radius-sm);
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .btn-outline:hover {
+      background: var(--pale-sage);
+      border-color: var(--deep-forest);
+    }
+
+    .hero-image {
+      flex: 0.9;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .hero-image img {
+      width: 100%;
+      max-width: 360px;
+      border-radius: 40% 60% 40% 60% / 60% 40% 60% 40%;
+      box-shadow: var(--shadow-md);
+      object-fit: cover;
+      border: 4px solid var(--white);
+    }
+
+    /* ---------- Section Header ---------- */
+    .section-header {
+      margin: 3rem 0 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      flex-wrap: wrap;
+    }
+
+    /* ---------- Product Grids ---------- */
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+      gap: 2rem 1.5rem;
+      margin-top: 0.5rem;
+    }
+
+    .product-card {
+      background: var(--white);
+      border-radius: var(--radius-md);
+      padding: 1.5rem 1rem 1.2rem;
+      text-align: center;
+      box-shadow: var(--shadow-sm);
+      transition: all 0.25s ease;
+      border: 1px solid rgba(212, 163, 115, 0.2);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+    }
+
+    .product-card:hover {
+      transform: translateY(-8px);
+      box-shadow: var(--shadow-md);
+      border-color: var(--golden);
+    }
+
+    .product-icon {
+      width: 90px;
+      height: 90px;
+      border-radius: 50%;
+      background: var(--soft-beige);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.2rem;
+      font-size: 3rem;
+      color: var(--deep-forest);
+      transition: 0.2s;
+      border: 1px solid var(--pale-sage);
+    }
+
+    .product-card:hover .product-icon {
+      background: var(--pale-sage);
+      color: var(--warm-clay);
+    }
+
+    .product-card h3 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: var(--deep-forest);
+      margin-bottom: 0.4rem;
+      letter-spacing: -0.3px;
+    }
+
+    .product-tag {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--warm-clay);
+      font-weight: 600;
+      background: var(--soft-beige);
+      padding: 0.25rem 1rem;
+      border-radius: 40px;
+      display: inline-block;
+      margin-bottom: 0.8rem;
+    }
+
+    .product-price {
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: var(--deep-forest);
+      margin-bottom: 0.6rem;
+    }
+
+    .product-price span {
+      font-size: 0.8rem;
+      font-weight: 400;
+      color: var(--text-soft);
+      text-decoration: line-through;
+      margin-left: 6px;
+    }
+
+    .rating {
+      color: #e6b422;
+      font-size: 0.8rem;
+      letter-spacing: 2px;
+      margin-bottom: 0.8rem;
+    }
+
+    .btn-small {
+      background: transparent;
+      border: 1px solid var(--sage);
+      color: var(--deep-forest);
+      padding: 0.5rem 1.5rem;
+      border-radius: 50px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+      margin-top: auto;
+      width: 100%;
+    }
+
+    .btn-small:hover {
+      background: var(--deep-forest);
+      color: var(--cream);
+      border-color: var(--deep-forest);
+    }
+
+    /* ---------- Divider / Footer ---------- */
+    .divider {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      margin: 4rem 0 1.5rem;
+      color: var(--golden);
+      font-size: 0.9rem;
+      letter-spacing: 4px;
+    }
+
+    .divider-line {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--golden), transparent);
+      flex: 1;
+    }
+
+    .footer-note {
+      text-align: center;
+      color: var(--sage);
+      font-size: 0.9rem;
+      padding-top: 1rem;
+      border-top: 1px solid rgba(106, 142, 111, 0.2);
+      display: flex;
+      justify-content: space-between;
       flex-wrap: wrap;
       gap: 1rem;
     }
 
-    .movie-card {
-      background: #1e2438;
-      border-radius: 1.5rem;
-      padding: 1rem 1.5rem;
-      display: flex;
-      align-items: center;
-      gap: 1.2rem;
-      cursor: pointer;
-      transition: all 0.2s ease;
-      border: 2px solid transparent;
-      flex: 1 1 200px;
-      box-shadow: 0 8px 16px -8px rgba(0, 0, 0, 0.4);
-      user-select: none;
+    .footer-note i {
+      color: var(--warm-clay);
+      margin-right: 5px;
     }
 
-    .movie-card:hover {
-      background: #252d44;
-      transform: translateY(-2px);
-      border-color: rgba(244, 63, 94, 0.4);
-    }
-
-    .movie-card.active {
-      border-color: #f43f5e;
-      background: #2a2f4a;
-      box-shadow: 0 0 0 2px rgba(244, 63, 94, 0.3), 0 12px 24px -12px #f43f5e;
-    }
-
-    .movie-poster {
-      width: 48px;
-      height: 48px;
-      border-radius: 12px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.8rem;
-      background: linear-gradient(145deg, #2d344b, #1b1f30);
-      color: #facc15;
-      box-shadow: inset 0 2px 4px rgba(0,0,0,0.6);
-    }
-
-    .movie-info h3 {
-      font-size: 1.2rem;
-      font-weight: 700;
-      letter-spacing: -0.01em;
-      margin-bottom: 0.2rem;
-    }
-
-    .movie-info p {
-      font-size: 0.8rem;
-      color: #94a3b8;
-      display: flex;
-      align-items: center;
-      gap: 0.4rem;
-    }
-
-    /* showtimes row */
-    .showtime-section {
-      margin-bottom: 2rem;
-    }
-
-    .showtime-grid {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.8rem;
-    }
-
-    .time-chip {
-      background: #1e2438;
-      border: 1.5px solid #2a3149;
-      border-radius: 60px;
-      padding: 0.7rem 1.6rem;
-      font-weight: 600;
-      font-size: 0.95rem;
-      color: #cbd5e1;
-      cursor: pointer;
-      transition: all 0.15s ease;
-      display: flex;
-      align-items: center;
-      gap: 0.6rem;
-      user-select: none;
-    }
-
-    .time-chip i {
-      color: #facc15;
-      font-size: 0.9rem;
-    }
-
-    .time-chip:hover {
-      background: #252d44;
-      border-color: #4f5b7a;
-      color: #fff;
-    }
-
-    .time-chip.active {
-      background: #f43f5e;
-      border-color: #f43f5e;
-      color: white;
-      box-shadow: 0 0 0 2px rgba(244, 63, 94, 0.3), 0 8px 16px -8px #f43f5e;
-    }
-
-    .time-chip.active i {
-      color: white;
-    }
-
-    /* seat map area */
-    .seat-section {
-      background: #141a28;
-      border-radius: 2rem;
-      padding: 1.8rem 1.5rem;
-      margin-bottom: 2rem;
-      border: 1px solid #242b3f;
-      box-shadow: inset 0 4px 12px rgba(0, 0, 0, 0.6);
-    }
-
-    .screen-indicator {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      margin-bottom: 2rem;
-    }
-
-    .screen-curve {
-      width: 80%;
-      max-width: 500px;
-      height: 38px;
-      background: linear-gradient(to bottom, #3b4259, #1b2132);
-      border-radius: 0 0 120px 120px;
-      box-shadow: 0 10px 20px -5px rgba(0, 0, 0, 0.8), inset 0 -4px 8px rgba(255, 255, 255, 0.05);
-      border-bottom: 3px solid #f43f5e;
-      margin-bottom: 0.5rem;
-    }
-
-    .screen-label {
-      color: #6b7a99;
-      font-size: 0.75rem;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      font-weight: 600;
-    }
-
-    .seats-grid {
-      display: flex;
-      flex-direction: column;
-      gap: 0.7rem;
-      align-items: center;
-      margin-bottom: 1.8rem;
-    }
-
-    .seat-row {
-      display: flex;
-      gap: 0.7rem;
-      justify-content: center;
-      flex-wrap: wrap;
-    }
-
-    .seat {
-      width: 42px;
-      height: 42px;
-      background: #252e44;
-      border-radius: 14px 14px 8px 8px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 0.75rem;
-      font-weight: 600;
-      color: #7c8aa5;
-      cursor: pointer;
-      transition: all 0.15s ease;
-      box-shadow: 0 4px 0 #0d1220, 0 6px 8px rgba(0, 0, 0, 0.4);
-      border: 1px solid #33405c;
-      user-select: none;
-      position: relative;
-    }
-
-    .seat:hover:not(.occupied) {
-      background: #2f3b57;
-      transform: translateY(-2px);
-      box-shadow: 0 6px 0 #0d1220, 0 10px 12px rgba(0, 0, 0, 0.4);
-      color: #d9e2ff;
-    }
-
-    .seat.selected {
-      background: #f43f5e;
-      color: white;
-      border-color: #ff8a9f;
-      box-shadow: 0 4px 0 #a01a34, 0 8px 12px rgba(244, 63, 94, 0.4);
-      transform: translateY(-1px);
-    }
-
-    .seat.occupied {
-      background: #2d3243;
-      color: #3e4559;
-      cursor: not-allowed;
-      box-shadow: 0 2px 0 #0b0f1a;
-      border-color: #262c3e;
-      opacity: 0.7;
-    }
-
-    .seat.occupied::after {
-      content: "✕";
-      font-size: 1rem;
-      font-weight: 400;
-      color: #4d556e;
-    }
-
-    .seat.occupied span {
-      display: none;
-    }
-
-    /* legend */
-    .legend {
-      display: flex;
-      justify-content: center;
-      gap: 2rem;
-      flex-wrap: wrap;
-      font-size: 0.8rem;
-      color: #94a3b8;
-      font-weight: 500;
-      margin-top: 0.5rem;
-    }
-
-    .legend-item {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-
-    .legend-box {
-      width: 20px;
-      height: 20px;
-      border-radius: 6px 6px 4px 4px;
-      background: #252e44;
-      border: 1px solid #33405c;
-    }
-
-    .legend-box.selected {
-      background: #f43f5e;
-      border-color: #ff8a9f;
-    }
-
-    .legend-box.occupied {
-      background: #2d3243;
-      border-color: #262c3e;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 0.7rem;
-      color: #4d556e;
-    }
-
-    /* summary + CTA */
-    .summary-bar {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 1.5rem;
-      background: #101624;
-      border-radius: 2rem;
-      padding: 1rem 1.8rem;
-      border: 1px solid #242b3f;
-      box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.5);
-    }
-
-    .selected-info {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      gap: 1.5rem;
-    }
-
-    .info-item {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      font-size: 0.95rem;
-      background: #1b2132;
-      padding: 0.4rem 1rem;
-      border-radius: 40px;
-      border: 1px solid #2d344b;
-    }
-
-    .info-item i {
-      color: #facc15;
-      font-size: 0.9rem;
-    }
-
-    .info-item strong {
-      color: white;
-      font-weight: 600;
-    }
-
-    .total-price {
-      font-size: 1.6rem;
-      font-weight: 700;
-      color: #fff;
-      background: linear-gradient(to right, #ffffff, #d9e2ff);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-      letter-spacing: -0.02em;
-    }
-
-    .total-price span {
-      font-size: 1.2rem;
-      color: #f43f5e;
-      background: none;
-      -webkit-background-clip: unset;
-      background-clip: unset;
-      margin-right: 0.2rem;
-    }
-
-    .book-btn {
-      background: #f43f5e;
-      border: none;
-      border-radius: 60px;
-      padding: 1rem 2.8rem;
-      font-weight: 700;
-      font-size: 1.1rem;
-      color: white;
-      display: flex;
-      align-items: center;
-      gap: 0.8rem;
-      cursor: pointer;
-      transition: all 0.2s ease;
-      box-shadow: 0 10px 20px -8px #f43f5e, 0 4px 0 #a01a34;
-      font-family: inherit;
-      letter-spacing: -0.01em;
-      border: 1px solid rgba(255, 255, 255, 0.1);
-    }
-
-    .book-btn:hover {
-      background: #f55a74;
-      transform: translateY(-2px);
-      box-shadow: 0 14px 24px -8px #f43f5e, 0 6px 0 #a01a34;
-    }
-
-    .book-btn:active {
-      transform: translateY(2px);
-      box-shadow: 0 6px 12px -6px #f43f5e, 0 2px 0 #a01a34;
-    }
-
-    .book-btn i {
-      font-size: 1.2rem;
-    }
-
-    /* toast message */
-    .toast-message {
-      position: fixed;
-      bottom: 2rem;
-      left: 50%;
-      transform: translateX(-50%) translateY(100px);
-      background: #1e293b;
-      color: white;
-      padding: 0.9rem 2rem;
-      border-radius: 60px;
-      font-weight: 500;
-      box-shadow: 0 20px 30px -10px black;
-      border-left: 5px solid #f43f5e;
-      opacity: 0;
-      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-      pointer-events: none;
-      z-index: 999;
-      font-size: 1rem;
-    }
-
-    .toast-message.show {
-      transform: translateX(-50%) translateY(0);
-      opacity: 1;
-    }
-
-    .toast-message i {
-      margin-right: 0.7rem;
-      color: #facc15;
-    }
-
-    /* responsive touches */
-    @media (max-width: 700px) {
-      .booking-app {
-        padding: 1.5rem;
+    /* ---------- Responsive ---------- */
+    @media (max-width: 900px) {
+      .hero {
+        flex-direction: column-reverse;
+        padding: 2rem;
       }
-      .seat {
-        width: 34px;
-        height: 34px;
-        font-size: 0.65rem;
-        border-radius: 10px 10px 6px 6px;
+      .hero-content h2 {
+        font-size: 2.5rem;
       }
-      .seat-row {
-        gap: 0.5rem;
+      .hero-image img {
+        max-width: 280px;
       }
-      .summary-bar {
+      .navbar {
         flex-direction: column;
-        align-items: stretch;
+        gap: 1rem;
+        align-items: flex-start;
       }
-      .book-btn {
-        justify-content: center;
+      .nav-links a {
+        margin-left: 0;
+        margin-right: 1.8rem;
       }
     }
 
-    @media (max-width: 480px) {
-      .seat {
-        width: 28px;
-        height: 28px;
-        font-size: 0.55rem;
+    @media (max-width: 500px) {
+      .container {
+        padding: 1rem;
       }
-      .seat-row {
-        gap: 0.35rem;
+      .hero-content h2 {
+        font-size: 2rem;
       }
-      .movie-card {
-        padding: 0.8rem 1rem;
+      .products-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
+      }
+      .product-card {
+        padding: 1rem 0.8rem;
+      }
+      .product-icon {
+        width: 70px;
+        height: 70px;
+        font-size: 2.2rem;
+      }
+      .product-card h3 {
+        font-size: 1rem;
+      }
+      .section-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
       }
     }
   </style>
 </head>
 <body>
-  <div class="booking-app">
-    <!-- header -->
-    <div class="app-header">
+  <div class="container">
+    <!-- Navigation -->
+    <nav class="navbar">
       <div class="logo">
-        <i class="fas fa-film"></i>
-        <span>CineMax</span>
-      </div>
-      <div class="badge">
-        <i class="fas fa-star"></i> 4.9 · Premium experience
-      </div>
-    </div>
-
-    <!-- movie selection -->
-    <div class="movie-section">
-      <div class="section-title">
-        <i class="fas fa-video"></i> Now showing
-      </div>
-      <div class="movie-grid" id="movieGrid">
-        <!-- Movie cards injected via JS -->
-      </div>
-    </div>
-
-    <!-- showtime selection -->
-    <div class="showtime-section">
-      <div class="section-title">
-        <i class="fas fa-clock"></i> Select showtime
-      </div>
-      <div class="showtime-grid" id="showtimeGrid">
-        <!-- Time chips injected via JS -->
-      </div>
-    </div>
-
-    <!-- seat map -->
-    <div class="seat-section">
-      <div class="screen-indicator">
-        <div class="screen-curve"></div>
-        <div class="screen-label">screen</div>
-      </div>
-
-      <div class="seats-grid" id="seatsGrid">
-        <!-- Seat rows injected via JS -->
-      </div>
-
-      <!-- legend -->
-      <div class="legend">
-        <div class="legend-item"><div class="legend-box"></div> Available</div>
-        <div class="legend-item"><div class="legend-box selected"></div> Selected</div>
-        <div class="legend-item"><div class="legend-box occupied">✕</div> Occupied</div>
-      </div>
-    </div>
-
-    <!-- summary & book button -->
-    <div class="summary-bar">
-      <div class="selected-info">
-        <div class="info-item">
-          <i class="fas fa-chair"></i> <span id="seatCount">0</span> seats
-        </div>
-        <div class="info-item">
-          <i class="fas fa-tag"></i> <strong id="selectedMovieName">—</strong>
-        </div>
-        <div class="info-item">
-          <i class="fas fa-clock"></i> <span id="selectedTime">—</span>
+        <div class="logo-icon">🌿</div>
+        <div class="logo-text">
+          <h1>Seetha</h1>
+          <span>cosmetics · ayurveda</span>
         </div>
       </div>
-      <div class="total-price">
-        <span>$</span><span id="totalPrice">0</span>
+      <div class="nav-links">
+        <a href="#">Soaps</a>
+        <a href="#">Shampoos</a>
+        <a href="#">Oils</a>
+        <a href="#">Rituals</a>
       </div>
-      <button class="book-btn" id="bookBtn">
-        <i class="fas fa-ticket-alt"></i> Book now
-      </button>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero">
+      <div class="hero-content">
+        <div class="badge"><i class="fas fa-leaf"></i> 100% natural & handmade</div>
+        <h2>
+          <i class="fas fa-seedling"></i> Ayuredic wisdom,<br> everyday glow.
+        </h2>
+        <p>Handcrafted soaps, shampoos & oils — made with sunipiondi, multani mitti, rose, neem, sandalwood, goat milk, donkey milk & more.</p>
+        <div class="hero-cta">
+          <button class="btn-primary"><i class="fas fa-bag-shopping"></i> Shop collection</button>
+          <button class="btn-outline"><i class="fas fa-circle-info"></i> Our story</button>
+        </div>
+      </div>
+      <div class="hero-image">
+        <!-- decorative image: natural soap & herbs -->
+        <img src="https://placecats.com/300/300" alt="Ayurvedic soap and herbs" style="background: #e8d9c6; object-fit: cover; min-height: 260px;">
+        <!-- fallback if image fails, but fine for demo -->
+      </div>
+    </header>
+
+    <!-- SOAPS SECTION -->
+    <div class="section-header">
+      <h2><i class="fas fa-soap"></i> Ayurvedic Soaps</h2>
+      <span style="color: var(--sage); font-size: 0.95rem; letter-spacing: 0.5px;">cold‑processed · palm‑free</span>
+    </div>
+    <p class="section-subhead">traditional recipes with sunipiondi, multani mitti, rose, neem & more</p>
+
+    <div class="products-grid">
+      <!-- Sunipiondi soap -->
+      <div class="product-card">
+        <div class="product-icon"><i class="fas fa-sun"></i></div>
+        <h3>Sunipiondi Soap</h3>
+        <div class="product-tag">brightening</div>
+        <div class="product-price">₹249 <span>₹320</span></div>
+        <div class="rating">★★★★★</div>
+        <button class="btn-small">Add to cart</button>
+      </div>
+      <!-- Multani Mitti soap -->
+      <div class="product-card">
+        <div class="product-icon"><i class="fas fa-mountain"></i></div>
+        <h3>Multani Mitti Soap</h3>
+        <div class="product-tag">deep cleanse</div>
+        <div class="product-price">₹229 <span>₹299</span></div>
+        <div class="rating">★★★★☆</div>
+        <button class="btn-small">Add to cart</button>
+      </div>
+      <!-- Rose soap -->
+      <div class="product-card">
+        <div class="product-icon"><i class="fas fa-rose"></i></div>
+        <h3>Rose Soap</h3>
+        <div class="product-tag">hydrating</div>
+        <div class="product-price">₹259 <span>₹330</span></div>
+        <div class="rating">★★★★★</div>
+        <button class="btn-small">Add to cart</button>
+      </div>
+      <!-- Neem soap -->
+      <div class="product-card">
+        <div class="product-icon"><i class="fas fa-leaf"></i></div>
+        <h3>Neem Soap</h3>
+        <div class="product-tag">purifying</div>
+        <div class="product-price">₹199 <span>₹270</span></div>
+        <div class="rating">★★★★☆</div>
+        <button class="btn-small">Add to cart</button>
+      </div>
+      <!-- Sandalwood soap -->
+      <div class="product-card">
+        <div class="product-icon"><i class="fas fa-tree"></i></div>
+        <h3>Sandalwood Soap</h3>
+        <div class="product-tag">soothing</div>
+        <div class="product-price">₹299 <span>₹380</span></div>
+        <div class="rating">★★★★★</div>
+        <button class="btn-small">Add to cart</button>
+      </div>
+      <!-- Goat milk soap -->
+      <div class="product-card">
+        <div class="product-icon"><i class="fas fa-cow"></i></div>
+        <h3>Goat Milk Soap</h3>
+        <div class="product-tag">nourishing</div>
+        <div class="product-price">₹279 <span>₹350</span></div>
+        <div class="rating">★★★★★</div>
+        <button class="btn-small">Add to cart</button>
+      </div>
+      <!-- Donkey milk soap -->
+      <div class="product-card">
+        <div class="product-icon"><i class="fas fa-horse"></i></div>
+        <h3>Donkey Milk Soap</h3>
+        <div class="product-tag">anti‑aging</div>
+        <div class="product-price">₹349 <span>₹450</span></div>
+        <div class="rating">★★★★☆</div>
+        <button class="btn-small">Add to cart</button>
+      </div>
+      <!-- extra placeholder for grid balance: Aloe Vera soap -->
+      <div class="product-card">
+        <div class="product-icon"><i class="fas fa-spa"></i></div>
+        <h3>Aloe Vera Soap</h3>
+        <div class="product-tag">calming</div>
+        <div class="product-price">₹219 <span>₹290</span></div>
+        <div class="rating">★★★★☆</div>
+        <button class="btn-small">Add to cart</button>
+      </div>
+    </div>
+
+    <!-- SHAMPOOS SECTION -->
+    <div class="section-header" style="margin-top: 4rem;">
+      <h2><i class="fas fa-pump-medical"></i> Ayurvedic Shampoos</h2>
+      <span style="color: var(--sage); font-size: 0.95rem;">SLS‑free · plant‑based</span>
+    </div>
+    <p class="section-subhead">herbal cleansers for lustrous, strong hair</p>
+
+    <div class="products-grid">
+      <!-- Shampoo 1 -->
+      <div class="product-card">
+        <div class="product-icon"><i class="fas fa-flask"></i></div>
+        <h3>Shikakai Shampoo</h3>
+        <div class="product-tag">hair fall control</div>
+        <div class="product-price">₹399 <span>₹499</span></div>
+        <div class="rating">★★★★★</div>
+        <button class="btn-small">Add to cart</button>
+      </div>
+      <!-- Shampoo 2 -->
+      <div class="product-card">
+        <div class="product-icon"><i class="fas fa-seedling"></i></div>
+        <h3>Rosemary & Mint</h3>
+        <div class="product-tag">growth boost</div>
+        <div class="product-price">₹429 <span>₹550</span></div>
+        <div class="rating">★★★★☆</div>
+        <button class="btn-small">Add to cart</button>
+      </div>
+      <!-- Shampoo 3 -->
+      <div class="product-card">
+        <div class="product-icon"><i class="fas fa-mortar-pestle"></i></div>
+        <h3>Bhringraj Shampoo</h3>
+        <div class="product-tag">deep repair</div>
+        <div class="product-price">₹449 <span>₹570</span></div>
+        <div class="rating">★★★★★</div>
+        <button class="btn-small">Add to cart</button>
+      </div>
+      <!-- Shampoo 4 -->
+      <div class="product-card">
+        <div class="product-icon"><i class="fas fa-coconut"></i></div>
+        <h3>Coconut Milk Shampoo</h3>
+        <div class="product-tag">moisture rich</div>
+        <div class="product-price">₹379 <span>₹470</span></div>
+        <div class="rating">★★★★☆</div>
+        <button class="btn-small">Add to cart</button>
+      </div>
+    </div>
+
+    <!-- OILS SECTION -->
+    <div class="section-header" style="margin-top: 4rem;">
+      <h2><i class="fas fa-oil-can"></i> Ayurvedic Oils</h2>
+      <span style="color: var(--sage); font-size: 0.95rem;">cold‑pressed · pure</span>
+    </div>
+    <p class="section-subhead">nourish hair & skin with ancient herbal infusions</p>
+
+    <div class="products-grid">
+      <!-- Oil 1 -->
+      <div class="product-card">
+        <div class="product-icon"><i class="fas fa-droplet"></i></div>
+        <h3>Bhringraj Oil</h3>
+        <div class="product-tag">hair growth</div>
+        <div class="product-price">₹349 <span>₹450</span></div>
+        <div class="rating">★★★★★</div>
+        <button class="btn-small">Add to cart</button>
+      </div>
+      <!-- Oil 2 -->
+      <div class="product-card">
+        <div class="product-icon"><i class="fas fa-leaf"></i></div>
+        <h3>Neem & Tea Tree</h3>
+        <div class="product-tag">scalp care</div>
+        <div class="product-price">₹319 <span>₹410</span></div>
+        <div class="rating">★★★★☆</div>
+        <button class="btn-small">Add to cart</button>
+      </div>
+      <!-- Oil 3 -->
+      <div class="product-card">
+        <div class="product-icon"><i class="fas fa-heart"></i></div>
+        <h3>Rosehip Facial Oil</h3>
+        <div class="product-tag">glow & repair</div>
+        <div class="product-price">₹499 <span>₹650</span></div>
+        <div class="rating">★★★★★</div>
+        <button class="btn-small">Add to cart</button>
+      </div>
+      <!-- Oil 4 -->
+      <div class="product-card">
+        <div class="product-icon"><i class="fas fa-sun"></i></div>
+        <h3>Sandalwood Oil</h3>
+        <div class="product-tag">cooling</div>
+        <div class="product-price">₹549 <span>₹699</span></div>
+        <div class="rating">★★★★☆</div>
+        <button class="btn-small">Add to cart</button>
+      </div>
+    </div>
+
+    <!-- Divider & Footer -->
+    <div class="divider">
+      <span class="divider-line"></span>
+      <i class="fas fa-leaf"></i>
+      <span class="divider-line"></span>
+    </div>
+
+    <div class="footer-note">
+      <span><i class="fas fa-truck"></i> free shipping over ₹599</span>
+      <span><i class="fas fa-hand-holding-heart"></i> 100% cruelty‑free</span>
+      <span><i class="fas fa-seedling"></i> ayurvedic & handmade</span>
+    </div>
+    <div style="text-align: center; margin-top: 2rem; font-size: 0.8rem; color: #a7b9a7;">
+      © Seetha Cosmetics — rooted in Ayurveda
     </div>
   </div>
-
-  <!-- toast for feedback -->
-  <div class="toast-message" id="toast">
-    <i class="fas fa-check-circle"></i> <span id="toastText">Booking confirmed!</span>
-  </div>
-
-  <script>
-    (function() {
-      // ---------- DATA ----------
-      const movies = [
-        { id: 'm1', title: 'Dune: Part Two', emoji: '🏜️', rating: 'PG-13', duration: '2h 46m' },
-        { id: 'm2', title: 'Oppenheimer', emoji: '⚛️', rating: 'R', duration: '3h 0m' },
-        { id: 'm3', title: 'Barbie', emoji: '💖', rating: 'PG-13', duration: '1h 54m' },
-        { id: 'm4', title: 'The Batman', emoji: '🦇', rating: 'PG-13', duration: '2h 56m' }
-      ];
-
-      const showtimes = ['12:30 PM', '3:45 PM', '7:15 PM', '10:00 PM'];
-
-      // seat layout: 6 rows, 8 seats per row (A1..A8 etc)
-      const ROWS = ['A', 'B', 'C', 'D', 'E', 'F'];
-      const SEATS_PER_ROW = 8;
-
-      // Occupied seats (hardcoded for realism)
-      const OCCUPIED_SEATS = new Set([
-        'A3','A4','B5','B6','C2','C7','D1','D8','E4','E5','F2','F6'
-      ]);
-
-      // ---------- STATE ----------
-      let selectedMovieId = movies[0].id;
-      let selectedTime = showtimes[0];
-      let selectedSeats = new Set(); // stores seat identifiers like 'A1', 'B2'
-
-      // DOM elements
-      const movieGrid = document.getElementById('movieGrid');
-      const showtimeGrid = document.getElementById('showtimeGrid');
-      const seatsGrid = document.getElementById('seatsGrid');
-      const seatCountSpan = document.getElementById('seatCount');
-      const selectedMovieNameSpan = document.getElementById('selectedMovieName');
-      const selectedTimeSpan = document.getElementById('selectedTime');
-      const totalPriceSpan = document.getElementById('totalPrice');
-      const bookBtn = document.getElementById('bookBtn');
-      const toast = document.getElementById('toast');
-      const toastText = document.getElementById('toastText');
-
-      // ---------- HELPER FUNCTIONS ----------
-      function getMovieById(id) {
-        return movies.find(m => m.id === id);
-      }
-
-      // Update summary (movie name, time, seat count, total)
-      function updateSummary() {
-        const movie = getMovieById(selectedMovieId);
-        selectedMovieNameSpan.textContent = movie ? movie.title : '—';
-        selectedTimeSpan.textContent = selectedTime || '—';
-        seatCountSpan.textContent = selectedSeats.size;
-
-        // price: $12 per seat (base) + small movie premium (just for fun)
-        const basePrice = 12;
-        const moviePremium = selectedMovieId === 'm2' ? 2 : 0; // Oppenheimer costs $2 more
-        const pricePerSeat = basePrice + moviePremium;
-        const total = selectedSeats.size * pricePerSeat;
-        totalPriceSpan.textContent = total.toFixed(0);
-      }
-
-      // Show toast message
-      function showToast(msg, isSuccess = true) {
-        toastText.textContent = msg;
-        toast.querySelector('i').className = isSuccess ? 'fas fa-check-circle' : 'fas fa-exclamation-circle';
-        toast.style.borderLeftColor = isSuccess ? '#f43f5e' : '#facc15';
-        toast.classList.add('show');
-        setTimeout(() => {
-          toast.classList.remove('show');
-        }, 2800);
-      }
-
-      // ---------- RENDER MOVIES ----------
-      function renderMovies() {
-        movieGrid.innerHTML = '';
-        movies.forEach(movie => {
-          const card = document.createElement('div');
-          card.className = `movie-card ${movie.id === selectedMovieId ? 'active' : ''}`;
-          card.dataset.movieId = movie.id;
-
-          card.innerHTML = `
-            <div class="movie-poster">${movie.emoji}</div>
-            <div class="movie-info">
-              <h3>${movie.title}</h3>
-              <p><i class="fas fa-star" style="color:#facc15;"></i> ${movie.rating} · ${movie.duration}</p>
-            </div>
-          `;
-
-          card.addEventListener('click', () => {
-            if (selectedMovieId === movie.id) return;
-            selectedMovieId = movie.id;
-            // Reset selected seats when movie changes (to keep it clean)
-            selectedSeats.clear();
-            // Re-render movie active state
-            renderMovies();
-            updateSummary();
-            // Re-render seats (occupied stays same but we may want to keep the state)
-            renderSeats();
-          });
-
-          movieGrid.appendChild(card);
-        });
-      }
-
-      // ---------- RENDER SHOWTIMES ----------
-      function renderShowtimes() {
-        showtimeGrid.innerHTML = '';
-        showtimes.forEach(time => {
-          const chip = document.createElement('div');
-          chip.className = `time-chip ${time === selectedTime ? 'active' : ''}`;
-          chip.innerHTML = `<i class="far fa-clock"></i> ${time}`;
-
-          chip.addEventListener('click', () => {
-            if (selectedTime === time) return;
-            selectedTime = time;
-            // Clear selected seats when showtime changes? Yes, for a realistic flow
-            selectedSeats.clear();
-            renderShowtimes();
-            updateSummary();
-            renderSeats(); // refresh seat highlighting
-          });
-
-          showtimeGrid.appendChild(chip);
-        });
-      }
-
-      // ---------- RENDER SEATS ----------
-      function renderSeats() {
-        seatsGrid.innerHTML = '';
-
-        ROWS.forEach(rowLetter => {
-          const rowDiv = document.createElement('div');
-          rowDiv.className = 'seat-row';
-
-          for (let i = 1; i <= SEATS_PER_ROW; i++) {
-            const seatId = `${rowLetter}${i}`;
-            const seatDiv = document.createElement('div');
-            seatDiv.className = 'seat';
-            seatDiv.dataset.seatId = seatId;
-
-            // Check if occupied
-            if (OCCUPIED_SEATS.has(seatId)) {
-              seatDiv.classList.add('occupied');
-            } else if (selectedSeats.has(seatId)) {
-              seatDiv.classList.add('selected');
-            }
-
-            // Display seat label (letter+number) — small text
-            seatDiv.textContent = seatId;
-
-            // Click handler (only if not occupied)
-            if (!OCCUPIED_SEATS.has(seatId)) {
-              seatDiv.addEventListener('click', (e) => {
-                e.stopPropagation();
-                if (selectedSeats.has(seatId)) {
-                  selectedSeats.delete(seatId);
-                  seatDiv.classList.remove('selected');
-                } else {
-                  // Optional: limit max seats (e.g., 8)
-                  if (selectedSeats.size >= 8) {
-                    showToast('Maximum 8 seats per booking', false);
-                    return;
-                  }
-                  selectedSeats.add(seatId);
-                  seatDiv.classList.add('selected');
-                }
-                updateSummary();
-              });
-            }
-
-            rowDiv.appendChild(seatDiv);
-          }
-
-          seatsGrid.appendChild(rowDiv);
-        });
-
-        // After re-render, update summary (seat count may have changed if we cleared)
-        updateSummary();
-      }
-
-      // ---------- BOOK ACTION ----------
-      function handleBooking() {
-        if (selectedSeats.size === 0) {
-          showToast('Please select at least one seat', false);
-          return;
-        }
-
-        const movie = getMovieById(selectedMovieId);
-        const seatList = Array.from(selectedSeats).sort().join(', ');
-        const total = totalPriceSpan.textContent;
-
-        // Simulate booking success
-        showToast(`✅ Booked ${selectedSeats.size} seat(s) for "${movie.title}" (${selectedTime}) · Total $${total}`);
-
-        // Clear selected seats after booking? We could, but for UX let's keep them so user sees what they booked.
-        // But we can also reset the selection to simulate a fresh start. Let's keep the seats selected for realism.
-        // Optional: alert or just toast. We'll also disable the button briefly to prevent double booking.
-        bookBtn.disabled = true;
-        bookBtn.style.opacity = '0.7';
-        setTimeout(() => {
-          bookBtn.disabled = false;
-          bookBtn.style.opacity = '1';
-        }, 1500);
-      }
-
-      // ---------- INITIAL RENDER ----------
-      function init() {
-        renderMovies();
-        renderShowtimes();
-        renderSeats();   // also calls updateSummary inside
-        // Ensure summary reflects initial state
-        updateSummary();
-
-        // Set up book button listener
-        bookBtn.addEventListener('click', handleBooking);
-
-        // Add some extra polish: set movie name in summary initially
-        const firstMovie = getMovieById(selectedMovieId);
-        if (firstMovie) {
-          selectedMovieNameSpan.textContent = firstMovie.title;
-        }
-
-        // Add a small animation to the seat section (optional)
-        // You can also pre-select a seat for demo? No, let the user do it.
-      }
-
-      init();
-    })();
-  </script>
 </body>
 </html>
