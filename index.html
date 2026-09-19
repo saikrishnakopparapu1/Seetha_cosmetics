@@ -260,11 +260,13 @@
 
     .hero-image img {
       width: 100%;
-      max-width: 360px;
+      max-width: 380px;
+      aspect-ratio: 1 / 1;
       border-radius: 40% 60% 40% 60% / 60% 40% 60% 40%;
       box-shadow: var(--shadow-md);
       object-fit: cover;
       border: 4px solid var(--white);
+      background: var(--soft-beige);
     }
 
     /* ---------- Section Header ---------- */
@@ -432,7 +434,7 @@
         font-size: 2.5rem;
       }
       .hero-image img {
-        max-width: 280px;
+        max-width: 300px;
       }
       .navbar {
         flex-direction: column;
@@ -508,9 +510,12 @@
         </div>
       </div>
       <div class="hero-image">
-        <!-- decorative image: natural soap & herbs -->
-        <img src="https://placecats.com/300/300" alt="Ayurvedic soap and herbs" style="background: #e8d9c6; object-fit: cover; min-height: 260px;">
-        <!-- fallback if image fails, but fine for demo -->
+        <!-- Ayurvedic soaps & herbs image (replaces the cat image) -->
+        <img 
+          src="https://images.unsplash.com/photo-1600857544200-b2f666a9a2ec?w=800&q=80&auto=format&fit=crop" 
+          alt="Handmade Ayurvedic soap bars with natural herbs and flowers" 
+          loading="lazy"
+        >
       </div>
     </header>
 
@@ -585,7 +590,7 @@
         <div class="rating">★★★★☆</div>
         <button class="btn-small">Add to cart</button>
       </div>
-      <!-- extra placeholder for grid balance: Aloe Vera soap -->
+      <!-- Aloe Vera soap -->
       <div class="product-card">
         <div class="product-icon"><i class="fas fa-spa"></i></div>
         <h3>Aloe Vera Soap</h3>
@@ -604,7 +609,6 @@
     <p class="section-subhead">herbal cleansers for lustrous, strong hair</p>
 
     <div class="products-grid">
-      <!-- Shampoo 1 -->
       <div class="product-card">
         <div class="product-icon"><i class="fas fa-flask"></i></div>
         <h3>Shikakai Shampoo</h3>
@@ -613,7 +617,6 @@
         <div class="rating">★★★★★</div>
         <button class="btn-small">Add to cart</button>
       </div>
-      <!-- Shampoo 2 -->
       <div class="product-card">
         <div class="product-icon"><i class="fas fa-seedling"></i></div>
         <h3>Rosemary & Mint</h3>
@@ -622,7 +625,6 @@
         <div class="rating">★★★★☆</div>
         <button class="btn-small">Add to cart</button>
       </div>
-      <!-- Shampoo 3 -->
       <div class="product-card">
         <div class="product-icon"><i class="fas fa-mortar-pestle"></i></div>
         <h3>Bhringraj Shampoo</h3>
@@ -631,7 +633,6 @@
         <div class="rating">★★★★★</div>
         <button class="btn-small">Add to cart</button>
       </div>
-      <!-- Shampoo 4 -->
       <div class="product-card">
         <div class="product-icon"><i class="fas fa-coconut"></i></div>
         <h3>Coconut Milk Shampoo</h3>
@@ -650,7 +651,6 @@
     <p class="section-subhead">nourish hair & skin with ancient herbal infusions</p>
 
     <div class="products-grid">
-      <!-- Oil 1 -->
       <div class="product-card">
         <div class="product-icon"><i class="fas fa-droplet"></i></div>
         <h3>Bhringraj Oil</h3>
@@ -659,7 +659,6 @@
         <div class="rating">★★★★★</div>
         <button class="btn-small">Add to cart</button>
       </div>
-      <!-- Oil 2 -->
       <div class="product-card">
         <div class="product-icon"><i class="fas fa-leaf"></i></div>
         <h3>Neem & Tea Tree</h3>
@@ -668,7 +667,6 @@
         <div class="rating">★★★★☆</div>
         <button class="btn-small">Add to cart</button>
       </div>
-      <!-- Oil 3 -->
       <div class="product-card">
         <div class="product-icon"><i class="fas fa-heart"></i></div>
         <h3>Rosehip Facial Oil</h3>
@@ -677,7 +675,6 @@
         <div class="rating">★★★★★</div>
         <button class="btn-small">Add to cart</button>
       </div>
-      <!-- Oil 4 -->
       <div class="product-card">
         <div class="product-icon"><i class="fas fa-sun"></i></div>
         <h3>Sandalwood Oil</h3>
